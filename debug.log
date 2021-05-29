@@ -1,0 +1,2 @@
+[0410/221249.436:ERROR:registration_protocol_win.cc(130)] TransactNamedPipe: Potok zosta³ zakoñczony. (0x6D)
+[0410/221249.437:ERROR:crash_report_database_win.cc(606)] CreateDirectory C:\Program Files (x86)\Coldold\Reports\Dump: System nie mo¿e odnaleŸæ okreœlonej œcie¿ki. (0x3)
