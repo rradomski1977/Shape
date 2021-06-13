@@ -15,3 +15,4 @@ public class ArrayOperationsTestSuite {
         Assert.assertEquals(15.1, average, 0.00001);
     }
 }
+
