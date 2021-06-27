@@ -33,7 +33,7 @@ public class ForumUser {
     }
 
     public ForumPost getPost(int postNumber) {
-        return null;
+        return posts.get(postNumber);
     }
 
     public ForumComment getComment(int commentNumber) {

@@ -1,6 +1,6 @@
 package com.kodilla.stream.forum;
 
-import org.junit.jupiter.api.Test;
+import org.testng.annotations.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -46,11 +46,11 @@ class ForumUserTestSuite {
         //      user3:  "Key West"
         //      user7:  "Washington"
         //      user10: "Miami"
-        assertEquals(3, user1.getLocationsOfFriends().size());
-        assertTrue(user1.getLocationsOfFriends().contains("Key West"));
-        assertTrue(user1.getLocationsOfFriends().contains("Washington"));
-        assertTrue(user1.getLocationsOfFriends().contains("Miami"));
-        assertFalse(user1.getLocationsOfFriends().contains("Orlando"));
+        assertEquals(3, user1.getLocationsOfFriendsOfFriends().size());
+        assertTrue(user1.getLocationsOfFriendsOfFriends().contains("Key West"));
+        assertTrue(user1.getLocationsOfFriendsOfFriends().contains("Washington"));
+        assertTrue(user1.getLocationsOfFriendsOfFriends().contains("Miami"));
+        assertFalse(user1.getLocationsOfFriendsOfFriends().contains("Orlando"));
     }
 
     @Test

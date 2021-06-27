@@ -43,7 +43,8 @@ class BookTestSuite {
         assertEquals(3, numberOfBooksPublicatedAfter2007);                      // [5]
     }
     @Test
-    void testGetListUsingIntStream() {
+
+    void testGetListUsingIntStream2() {
         //Given
         BookDirectory bookDirectory = new BookDirectory();
 

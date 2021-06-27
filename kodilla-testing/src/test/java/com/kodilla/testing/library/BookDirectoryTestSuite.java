@@ -1,7 +1,9 @@
 package com.kodilla.testing.library;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
@@ -10,20 +12,20 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
-
-
 @ExtendWith(MockitoExtension.class)
-class BookDirectoryTestSuite {
-
+public class BookDirectoryTestSuite {
     @Mock
     private LibraryDatabase libraryDatabaseMock;
     private BookLibrary bookLibrary;
 
-    BookDirectoryTestSuite(LibraryDatabase libraryDatabaseMock, BookLibrary bookLibrary) {
-        this.libraryDatabaseMock = libraryDatabaseMock;
-        this.bookLibrary = bookLibrary;
+//    BookDirectoryTestSuite(LibraryDatabase libraryDatabaseMock, BookLibrary bookLibrary) {
+//        this.libraryDatabaseMock = libraryDatabaseMock;
+//        this.bookLibrary = bookLibrary;
+//    }
+    @BeforeEach
+    public void init() {
+        bookLibrary = new BookLibrary(libraryDatabaseMock);
     }
-
     @Test
     public void testListBooksWithConditionsReturnList() {
         // Given
@@ -94,7 +96,7 @@ class BookDirectoryTestSuite {
         List<Book>listOfZeroBooks = new ArrayList<>();
         when(libraryDatabaseMock.listBooksInHandsOf(any(LibraryUser.class))).thenReturn(listOfZeroBooks);
         //When
-        List<Book> resultListBooksInHandsOf = bookLibrary.listBooksInHandsOf(isA(LibraryUser.class));
+        List<Book> resultListBooksInHandsOf = bookLibrary.listBooksInHandsOf(new LibraryUser("a", "b", "c"));
         //Then
         assertEquals(0, resultListBooksInHandsOf.size());
         verify(libraryDatabaseMock, times(1)).listBooksInHandsOf(any(LibraryUser.class));
@@ -106,8 +108,8 @@ class BookDirectoryTestSuite {
         List<Book>listOfOneBook = generateListOfNBooks(1);
         when(libraryDatabaseMock.listBooksInHandsOf(any(LibraryUser.class))).thenReturn(listOfOneBook);
         //When
-        List<Book> resultListBooksInHandsOf = bookLibrary.listBooksInHandsOf(isA(LibraryUser.class));
-        //Then
+        List<Book> resultListBooksInHandsOf = bookLibrary.listBooksInHandsOf(new LibraryUser("a", "b", "c"));
+                //Then
         assertEquals(1, resultListBooksInHandsOf.size());
         verify(libraryDatabaseMock, times(1)).listBooksInHandsOf(any(LibraryUser.class));
     }
@@ -118,7 +120,7 @@ class BookDirectoryTestSuite {
         List<Book>listOfFiveBooks = generateListOfNBooks(5);
         when(libraryDatabaseMock.listBooksInHandsOf(any(LibraryUser.class))).thenReturn(listOfFiveBooks);
         //When
-        List<Book> resultListBooksInHandsOf = bookLibrary.listBooksInHandsOf(isA(LibraryUser.class));
+        List<Book> resultListBooksInHandsOf = bookLibrary.listBooksInHandsOf(new LibraryUser("a", "b", "c"));
         //Then
         assertEquals(5, resultListBooksInHandsOf.size());
         verify(libraryDatabaseMock, times(1)).listBooksInHandsOf(any(LibraryUser.class));
