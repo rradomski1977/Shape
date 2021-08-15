@@ -1,2 +1,5 @@
-package com.kodilla.good.patterns.challanges;public class OrderRepository {
+package com.kodilla.good.patterns.challanges;
+
+public interface OrderRepository {
+    public void createRental(OrderRequest orderRequest);
 }
